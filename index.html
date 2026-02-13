@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Valentine's Proposal</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #ffe6e6;
+            color: #d63384;
+            margin: 0;
+            padding: 50px;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+        h1 {
+            font-size: 2em;
+            margin-bottom: 30px;
+        }
+        button {
+            font-size: 1.2em;
+            padding: 10px 20px;
+            margin: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s;
+            z-index: 1;
+        }
+        #yesBtn {
+            background-color: #ff69b4;
+            color: white;
+            position: relative;
+        }
+        #noBtn {
+            background-color: #ccc;
+            color: #333;
+        }
+        #message {
+            display: none;
+            font-size: 1.5em;
+            margin-top: 20px;
+            z-index: 2;
+        }
+    </style>
+</head>
+<body>
+    <h1 id="question">Will you be my valentine?</h1>
+    <button id="yesBtn">Yes</button>
+    <button id="noBtn">No</button>
+    <div id="message"></div>
+
+    <script>
+        const yesBtn = document.getElementById('yesBtn');
+        const noBtn = document.getElementById('noBtn');
+        const question = document.getElementById('question');
+        const message = document.getElementById('message');
+
+        let scale = 1;
+
+        noBtn.addEventListener('click', function() {
+            scale += 0.5;
+            if (scale < 5) {
+                yesBtn.style.transform = 'scale(' + scale + ')';
+                yesBtn.style.fontSize = (1.2 * scale) + 'em';
+                yesBtn.style.padding = (10 * scale) + 'px ' + (20 * scale) + 'px';
+            } else {
+                yesBtn.style.position = 'fixed';
+                yesBtn.style.top = '0';
+                yesBtn.style.left = '0';
+                yesBtn.style.width = '100vw';
+                yesBtn.style.height = '100vh';
+                yesBtn.style.fontSize = '5em';
+                yesBtn.style.padding = '0';
+                yesBtn.style.borderRadius = '0';
+                yesBtn.style.transform = 'none';
+                yesBtn.style.zIndex = '10';
+                yesBtn.textContent = 'YES!';
+                noBtn.style.display = 'none';
+            }
+        });
+
+        yesBtn.addEventListener('click', function() {
+            question.style.display = 'none';
+            yesBtn.style.display = 'none';
+            noBtn.style.display = 'none';
+            message.style.display = 'block';
+            message.textContent = "FUCK SHET LEZZZ GOOOO Baby Lets Go For a Hotpot Date nextweek:3 Ill treat you hehe I LOVE YOU MY WIFEY MWAAA";
+        });
+    </script>
+</body>
+</html>
